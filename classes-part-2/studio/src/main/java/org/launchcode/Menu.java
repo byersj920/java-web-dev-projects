@@ -27,6 +27,28 @@ public class Menu {
     public ArrayList<MenuItem> getItems() {
         return items;
     }
+
+    public void printMenuDate(){
+        System.out.println(this.lastUpdated);
+    }
+
+    public void addItem(MenuItem newItem){
+        this.lastUpdated = new Date();
+        this.items.add(newItem);
+    }
+
+    public void printItem(MenuItem searchItem){
+        int itemLocation = this.items.indexOf(searchItem);
+        System.out.println(this.items.get(itemLocation).toString());
+    }
+    public void printMenu(){
+        System.out.println("********* Full Menu *********");
+        for (MenuItem item: items){
+            System.out.println(item.toString());
+        }
+    }
+
+
 }
 
 
