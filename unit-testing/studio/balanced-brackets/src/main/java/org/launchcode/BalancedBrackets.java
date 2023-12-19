@@ -22,19 +22,39 @@ public class BalancedBrackets {
      * @param str - to be validated
      * @return true if balanced, false otherwise
      */
-    public static boolean hasBalancedBrackets(String str) {
-        ArrayList<Integer> bracketChecker = new ArrayList<>();
-        for (char ch : str.toCharArray()) {
-            if (ch == '[') {
-                bracketChecker.add(1) ;
-            } else if (ch == ']') {
-                if (!bracketChecker.isEmpty()){
-                    bracketChecker.remove(0);
-                } else{
+    public static <Arraylist> boolean hasBalancedBrackets(String str) {
+        ArrayList<Character> bracketChecker = new ArrayList<>();
+
+        for (char ch: str.toCharArray()){
+            if (ch == '[' || ch == '{' || ch == '('){
+                bracketChecker.add(ch);
+            } else if(ch == ']'){
+                if(bracketChecker.isEmpty()){
+                    return false;
+                }else if(bracketChecker.get(bracketChecker.size()-1) == '['){
+                    bracketChecker.remove(bracketChecker.size()-1);
+                }else{
+                    return false;
+                }
+            } else if(ch == '}'){
+                if(bracketChecker.isEmpty()){
+                    return false;
+                }else if(bracketChecker.get(bracketChecker.size()-1) == '{'){
+                    bracketChecker.remove(bracketChecker.size()-1);
+                }else{
+                    return false;
+                }
+            } else if(ch == ')'){
+                if(bracketChecker.isEmpty()){
+                    return false;
+                }else if(bracketChecker.get(bracketChecker.size()-1) == '('){
+                    bracketChecker.remove(bracketChecker.size()-1);
+                }else{
                     return false;
                 }
             }
         }
+
         return bracketChecker.isEmpty();
     }
 }
