@@ -20,8 +20,10 @@ public class Main {
         // Write code here!
     }
 
-    public static int CheckFileExtension(String fileName)
+    public static void CheckFileExtension(String fileName)
     {
+        //This code was popping up with an error. So I changed this method to static void instead
+        //of static int. Will have to change it back once I get to this chapter.
         // Write code here!
-    }
+        };
 }
